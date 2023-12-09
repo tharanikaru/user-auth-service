@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/deviquserdb
+    username: deviquserdb
+    password: password
+  hikari:
+    poolName: Hikari
+    auto-commit: false
+    maximum-pool-size: 5
+    minimum-idle: 1
+    connection-timeout: 300000
+    idle-timeout: 1800000
+    max-lifetime: 3600000
+    keepalive-time: 30000
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+
+token:
+  secret:
+    key: 83fc6f470f6f0dd7958737c5ae22c2ccee9ad22b07786897c12331b16522f8e4
+  expiry: 3600000 # 1 hour
