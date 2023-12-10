@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://git-ing-db.cmo2sx79horp.eu-north-1.rds.amazonaws.com:5432/userdb
-    username: deviquserdb
+    username: postgres
     password: password
   hikari:
     poolName: Hikari
@@ -17,7 +17,8 @@ spring:
       dialect: org.hibernate.dialect.PostgreSQLDialect
       naming:
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-
+server:
+  port: 8081
 token:
   secret:
     key: 83fc6f470f6f0dd7958737c5ae22c2ccee9ad22b07786897c12331b16522f8e4
