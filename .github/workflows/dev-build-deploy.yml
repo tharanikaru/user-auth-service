@@ -18,7 +18,7 @@ permissions:
 env:
   ECR_REPOSITORY: developeriq-userauth
   EKS_CLUSTER_NAME: developerqi-k8
-  # deploy in same eks cluster same namespace for easy communication
+  # deploy in same eks cluster same namespace for easy communication between microservices
   AWS_REGION: eu-north-1
 
 jobs:
