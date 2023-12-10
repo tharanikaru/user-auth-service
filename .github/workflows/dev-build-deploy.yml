@@ -54,7 +54,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      #    - name: Build & push Docker image to dockerhub
+      #    - name: Build & push Docker image to dockerhub -- not used
       #      uses: mr-smithers-excellent/docker-build-push@v6
       #      with:
       #        image: tharanikaru/developeriq-images
