@@ -36,17 +36,29 @@ public class AuthenticationService {
 
         user = userService.save(user);
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        return JwtAuthenticationResponse.builder()
+                .status(true)
+                .token(jwt).build();
     }
 
 
     public JwtAuthenticationResponse signin(SignInRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        var user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
-        var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+            var user = userRepository.findByEmail(request.getEmail())
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
+            var jwt = jwtService.generateToken(user);
+            return JwtAuthenticationResponse.builder()
+                    .status(true)
+                    .message("Log in successfully")
+                    .token(jwt).build();
+        } catch (Exception e) {
+            return  JwtAuthenticationResponse.builder()
+                    .status(false)
+                    .message(e.getMessage())
+                    .build();
+        }
     }
 
 }
